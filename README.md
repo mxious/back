@@ -1,15 +1,15 @@
-# Alphasquare
-Source code for the Alphasquare social debating application.
+# Mxious
+Source code for the Mxious social debating application.
 
 Installing
 ==========
-To install an instance of Alphasquare, check the wiki's article for that:
-https://github.com/Alphasquare/Alphasquare/wiki/Installing
+To install an instance of Mxious, check the wiki's article for that:
+https://github.com/Mxious/Mxious/wiki/Installing
 
 Before contributing
 ====================
 Before contributing, please read the Contributing standards found in
-https://github.com/Alphasquare/Alphasquare/wiki/Code-Quality-&-Formatting-Guide.
+https://github.com/Mxious/Mxious/wiki/Code-Quality-&-Formatting-Guide.
 We don't accept any pull requests/commits that do not comply with these standards. 
 Failure to comply with these standards multiple times may cause:
 
@@ -20,7 +20,7 @@ Failure to comply with these standards multiple times may cause:
 	5. Rejection of repository permissions.
 
 Please try to comply. 
-
+Al
 
 Requirements
 ===============
