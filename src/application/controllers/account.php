@@ -65,7 +65,8 @@ class Account extends CI_Controller {
     else {
       // Load the login page view
       $data['title'] = 'Sign in';
-      $data['fixed_container'] = true;
+      $data['show_hero'] = false;
+      $data['full_bg'] = false;
       $data['stylesheets'] = array('assets/css/bootstrap-social.css');
       $this->template->load('account/login', $data);
     }

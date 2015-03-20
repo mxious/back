@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Debate Model
+ * Posts Model
  *
  * @package Models
 */
@@ -11,12 +11,12 @@ class Debate_model extends CI_Model {
   /**
    * Get an array of posts depending on the params passed
    *
-   * @param string $type The type of debates (dashboard, profile, etc.)
+   * @param string $type The type of posts (dashboard, profile, etc.)
    * @param string $order The order of the posts (asc or desc)
    * @param int $offset The number of posts to start at
    * @param int $limit The number of posts to select (0 = all)
    * @param array $params An optional array of info (e.g. user id)
-   * @return array An array of debates and their info
+   * @return array An array of posts and their info
    */
   public function get_posts($type, $offset = 0, $limit = POST_DISPLAY_LIMIT, $params = array()) {
     $userid = $this->php_session->get('userid');
@@ -44,6 +44,8 @@ class Debate_model extends CI_Model {
                             )
                           OR d.userid = '{$userid}' )", null, false);
       break;
+      case 'explore':
+      break;
       case 'profile':
         // User is on a profile
         // Select posts by the profile user
@@ -55,15 +57,18 @@ class Debate_model extends CI_Model {
       break;
     }
 
-    $this->db->order_by('d.time', 'desc');
+      $this->db->order_by('d.time', 'desc');
+    
 
     if(!$limit) $limit = POST_DISPLAY_LIMIT; 
     $this->db->limit($limit, $offset);
 
     $results = $this->db->get()->result_array();
+
     return $results;
   }
 
+ 
   /**
    * Get the information of a debate
    * @param string $username The debate owner's username
@@ -77,7 +82,7 @@ class Debate_model extends CI_Model {
       'd.time' => $timestamp
     );
     $this->db->select('d.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
-             ->from('debates d')
+             ->from('posts d')
              ->join('users u', 'u.id = d.userid', 'left')
              ->join('votes v', 'v.postid = d.id AND v.userid = "'.$userid.'"', 'left')
              ->where($where)
@@ -96,7 +101,7 @@ class Debate_model extends CI_Model {
    * @return array An array of the debate's info
    */
   public function get_basic_info($id) {
-    return $this->db->get_where('debates', array('id'=>$id))
+    return $this->db->get_where('posts', array('id'=>$id))
                     ->row_array();
   }
 
@@ -107,7 +112,7 @@ class Debate_model extends CI_Model {
    */
   public function exists($id) {
     $this->db->select('id')
-             ->from('debates')
+             ->from('posts')
              ->where('id', $id);
     return $this->db->count_all_results() ? true : false;
   }
@@ -127,7 +132,7 @@ class Debate_model extends CI_Model {
     $this->load->library('points');
     $this->points->addPoints(5);
 
-    $insert = $this->db->insert('debates', $data);
+    $insert = $this->db->insert('posts', $data);
     if($insert) {
       // Filler data for the template (will throw undefined errors without this)
       $data['up_votes'] = 0;
@@ -173,7 +178,7 @@ class Debate_model extends CI_Model {
       $this->points->removePoints(5);
     
 
-    return $this->db->delete('debates', array('id'=>$id));
+    return $this->db->delete('posts', array('id'=>$id));
 
 
   }
@@ -232,7 +237,7 @@ class Debate_model extends CI_Model {
   /** 
    * Sync vote columns with votes table counts.
    *
-   * This method "syncs" the vote columns on the debates table
+   * This method "syncs" the vote columns on the posts table
    * with the actual vote counts in the votes table.
    *
    * @param int $id The ID of the debate
@@ -242,7 +247,7 @@ class Debate_model extends CI_Model {
     // get_vote_counts() returns an array: up_votes, down_votes
     $counts = $this->get_vote_counts($id);
     $this->db->where('id', $id);
-    $this->db->update('debates', $counts);
+    $this->db->update('posts', $counts);
   }
 
   /**

@@ -9,13 +9,6 @@
 |
 */
 
-// Broadcast
-$broadcast = array(
-  "New navbar design, and mobile bottom nav!",
-	"Dashboard and profiles are now equipped with infinite scrolling!",
-	"Implemented auto update of posts and comments!"
-);
-
 // Page to go to when user first registers
 define('REGISTER_REDIRECT', 'dashboard');
 
@@ -34,7 +27,7 @@ define('REGISTER_REDIRECT', 'dashboard');
 
  */
 
-define('USE_CDN', true);
+define('USE_CDN', false);
 
 // Email address for sys emails
 define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
@@ -42,8 +35,11 @@ define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
 // The number of comments to initially display
 define('COMMENT_DISPLAY_LIMIT', 3);
 
+// The site image
+define('SITE_IMG', 'https://ununsplash.imgix.net/photo-1421217336522-861978fdf33a?q=75&fm=jpg&s=833ba209bee18b5115db745aa9541234');
+
 // The number of posts to display on dashboard (before more are loaded)
-define('POST_DISPLAY_LIMIT', 10);
+define('POST_DISPLAY_LIMIT', 5);
 
 // Min Pass Length
 define('MIN_PASS_LENGTH', 6);

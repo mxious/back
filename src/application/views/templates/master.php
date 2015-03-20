@@ -6,23 +6,15 @@
 <?php $this->load->view('header'); ?>
 
 </head>
-<body>
+<body <?php if($full_bg == true) { echo 'style="background-image: url('.SITE_IMG.');background-size:cover;background-repeat: no-repeat; background-position: center center;"'; } ?>>
 <?php $this->load->view('navbar'); echo "\n"; ?>
+<?php if($show_hero == true) { $this->load->view('templates/hero'); } ?>
 
 <?php $this->load->view('templates/no_script'); echo "\n"; ?>
-
-<?php if(isset($fixed_container)): ?>
-<div id="content" class="container col-md-6 col-lg-6">
-<? else: ?>
-<div id="content" class="container-fluid">
-<? endif; ?>
-
 
 <?php echo $msg; ?>
 
 <?php echo $contents; ?>
-
-</div>
 
 <?php $this->load->view('footer'); echo "\n"; ?>
 

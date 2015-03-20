@@ -1,84 +1,26 @@
-
 <? foreach($posts as $post): ?>
-<article class="post" data-id="<?=$post['id']?>">
-  <a href="<?=profile_url($post['username'])?>">
-    <img src="<?=avatar_url($post['avatar'], $post['email'], 55)?>" title="<?=$post['username']?>" class="img-circle profile-picture" data-toggle="tooltip" data-placement="right" />
-  </a>
-  <section>
-    <div class="actions">
-      <a href="#" data-toggle="dropdown" class="post-actions">
-        <span class="glyphicon glyphicon-cog"></span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="postActions">
+<div class="col item-masonry" data-id="<?=$post['id']?>">
+      <div class="card">
+        <div class="card-image">
+          <img src="<?=$post['img_url']?>">
 
-       <? if($post['userid'] == session_get('userid')): ?>
-        <li>
-          <a href="#" class="promote-post">
-            <span class="glyphicon glyphicon-share-alt"></span>
-            Promote
-          </a>
-        </li>
+          <span class="card-title"><?=$post['title']?></span>
+        </div>
+        <div class="card-content">
+          <p class="ellipsis"><?=format_post($post['content'])?></p>
+        </div>
+        <div class="card-action">
+          <a class="activator">READ POST</a> <a href="">LISTEN</a>
+        </div>
+        <div class="card-reveal" class="post">
+          <span class="card-title grey-text text-darken-4"><?=$post['title']?> <i class="mdi-navigation-close right"></i></span>
+          <p><?=format_post($post['content'])?>
+                  <a href="<?=profile_url($post['username'])?>">
+    <img src="<?=avatar_url($post['avatar'], $post['email'], 55)?>" class="circle img-responsive item-avatar tooltipped" data-position="top" data-delay="50" data-tooltip="@<?=$post['username']?>" />
+     </a></p>
+        </div>
+      </div>
 
-        <li>
-          <a href="#" class="delete-post">
-            <span class="glyphicon glyphicon-trash"></span>
-            Delete
-          </a>
-        </li>
-        <? else: ?>
-
-        <li>
-          <a href="#" class="report-post">
-            <span class="glyphicon glyphicon-flag"></span>
-            Report
-          </a>
-        </li>
-
-        <? endif; ?>
-
-        <? if(session_get('employee') == 1): ?>
-
-        <li>
-
-          <a href="/employee/delete_post/<?=$post['id']?>">
-            <span class="glyphicon glyphicon-trash"></span>
-            Delete (staff action)
-          </a>
-        </li>
-
-        <? endif; ?>
-
-      </ul>
     </div>
-
-
-    <p class="post-text">
-      <?=format_post($post['content'])?>
-    </p>
-    <footer>
-
-      <button class="btn btn-xs btn-outline <?=$post['vote'] == 1 ? 'btn-primary' : 'btn-success'?> vote" data-type="up" title="Like">
-        <span class="glyphicon glyphicon-thumbs-up"></span>
-        <span class="count"><?=$post['up_votes']?></span>
-      </button>
-      <button class="btn btn-xs btn-outline <?=$post['vote'] == -1 ? 'btn-danger' : 'btn-success'?> vote" data-type="down" title="Dislike">
-        <span class="glyphicon glyphicon-thumbs-down"></span>
-        <span class="count"><?=$post['down_votes']?></span>
-      </button>
-
-      <? if(!isset($post['debate_page'])): ?>
-      &nbsp;
-      <a href="<?=base_url('debate/'.strtolower($post['username']).'/'.$post['time'])?>" class="btn btn-xs btn-info btn-outline">
-        <span class="glyphicon glyphicon-comment"></span>
-        <strong><?=$post['comments_count']?></strong>
-      </a>
-      <? endif; ?>
-
-      <abbr title="<?=date('c', $post['time'])?>" class="timeago"><?=date('F j, Y g:i A', $post['time'])?></abbr>
-
-    </footer>
-  </section>
-  <div class="clearfix"></div>
-</article>
+    
 <? endforeach; ?>

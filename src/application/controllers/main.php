@@ -9,6 +9,11 @@
 
 class Main extends CI_Controller {
 
+	function __construct() {
+		parent::__construct();
+		$this->load->model('debate_model');
+	}
+
 	/**
 	 * This is the home page
 	 */
@@ -24,6 +29,9 @@ class Main extends CI_Controller {
 				'assets/css/home.css',
 				'http://fonts.googleapis.com/css?family=Lato:700'
 			);
+			$posts = $this->debate_model->get_posts('explore', 0, 0);
+			// Turn $posts array into HTML
+			$data['posts'] = $this->debate_model->post_html($posts, true);
 			$this->template->load('home', $data);
 		}
 

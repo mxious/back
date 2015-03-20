@@ -46,8 +46,24 @@ class Template {
       $view_data['session'] = $CI->php_session;
       $view_data['loggedin'] = $CI->php_session->get('loggedin');
 
-      $title = $view_data['title'].' - Alphasquare';
+      $title = $view_data['title'].' - Mxious';
       $this->set('title', $title);
+
+      if (isset($view_data['show_hero'])) {
+        $show_hero = $view_data['show_hero'];
+        $this->set('show_hero', $show_hero);
+      } else {
+        $show_hero = true;
+        $this->set('show_hero', $show_hero);
+      }
+
+      if (isset($view_data['full_bg'])) {
+        $full_bg = $view_data['full_bg'];
+        $this->set('full_bg', $full_bg);
+      } else {
+        $full_bg = false;
+        $this->set('full_bg', $full_bg);
+      }
 
       $contents = $CI->load->view($view, $view_data, true);
       $this->set('contents', $contents);
