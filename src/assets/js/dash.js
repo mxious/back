@@ -58,7 +58,11 @@ var Dash = Dash || {
 	},
 
 	load_masonry: function () {
-
+	   $(Dash.feed_container).masonry({
+	      "itemSelector": '.item-masonry',
+	      "columnWidth": 250,
+	      "isFitWidth": true
+	   });
 	}
 
 }
