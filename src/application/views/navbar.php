@@ -1,4 +1,4 @@
-<? if(session_get('loggedin')): ?>
+<?php if(session_get('loggedin')): ?>
 
   <nav class=" yellow darken-4" role="navigation">
     <div class="container">
@@ -11,7 +11,7 @@
   </nav>
 
 
-<? else: ?>
+<?php else: ?>
 
   <nav class=" yellow darken-4" role="navigation">
     <div class="container">
@@ -24,5 +24,5 @@
   </nav>
 
 
-<? endif; ?>
+<?php endif; ?>
 

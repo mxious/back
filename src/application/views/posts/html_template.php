@@ -1,4 +1,4 @@
-<? foreach($posts as $post): ?>
+<?php foreach($posts as $post): ?>
 <div class="col item-masonry" data-id="<?=$post['id']?>">
       <div class="card">
         <div class="card-image">
@@ -23,4 +23,4 @@
 
     </div>
     
-<? endforeach; ?>
+<?php endforeach; ?>

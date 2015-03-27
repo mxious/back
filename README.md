@@ -25,7 +25,7 @@ Please try to comply.
 Requirements
 ===============
 PHP 5 or HHVM (we use HHVM in production)
-Short tags = YES
+Short tags = No (from longing-lion forwards or Alphasquare 2.0 alpha)
 MySQL
 
 Social

@@ -1,4 +1,4 @@
-<? if($msg['exists']): ?><br>
+<?php if($msg['exists']): ?><br>
 <div class="row container">
   <div class="col s12">
     <div class="card-panel yellow darken-4">
@@ -7,6 +7,6 @@
     </div>
   </div>
 </div>
-<? endif; ?>
+<?php endif; ?>
 
 <br>
