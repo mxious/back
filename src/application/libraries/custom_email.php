@@ -90,8 +90,8 @@ class Custom_email {
 		$data = $this->data;
 
 		if(!isset($data['from'])) {
-			$this->CI->email->from(SYS_EMAIL_FROM, 'Alphasquare');
-			$this->CI->email->reply_to(SYS_EMAIL_FROM, 'Alphasquare');
+			$this->CI->email->from(SYS_EMAIL_FROM, 'Mxious');
+			$this->CI->email->reply_to(SYS_EMAIL_FROM, 'Mxious');
 		}
 		else {
 			$this->CI->email->from($data['from']);

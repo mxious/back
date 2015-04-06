@@ -6,7 +6,7 @@
  * @package Models
 */
 
-class Debate_model extends CI_Model {
+class Post_model extends CI_Model {
 
   /**
    * Get an array of posts depending on the params passed
@@ -21,7 +21,7 @@ class Debate_model extends CI_Model {
   public function get_posts($type, $offset = 0, $limit = POST_DISPLAY_LIMIT, $params = array()) {
     $userid = $this->php_session->get('userid');
     $this->db->select('d.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
-             ->from('debates d')
+             ->from('posts d')
              // Get post owner's info
              ->join('users u', 'u.id = d.userid', 'inner')
              // Get the vote that the logged in user made on this post
@@ -52,7 +52,7 @@ class Debate_model extends CI_Model {
         $this->db->where('d.userid', $params['user_id']);
       break;
       case 'search':
-        // Searching debates
+        // Searching posts
         $this->db->like('d.content', $params['query'], 'both');
       break;
     }
@@ -70,10 +70,10 @@ class Debate_model extends CI_Model {
 
  
   /**
-   * Get the information of a debate
-   * @param string $username The debate owner's username
-   * @param int $timestamp The debate creation timestamp
-   * @return array An array of the debate's info
+   * Get the information of a post
+   * @param string $username The post owner's username
+   * @param int $timestamp The post creation timestamp
+   * @return array An array of the post's info
    */
   public function get_info($username, $timestamp) {
     $userid = $this->php_session->get('userid');
@@ -92,13 +92,13 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Get a specific debate's info by ID
+   * Get a specific post's info by ID
    *
-   * This is for getting a debate's info by ID
-   * It does not include the debate owner's info (no join on user table)
+   * This is for getting a post's info by ID
+   * It does not include the post owner's info (no join on user table)
    * 
-   * @param int $id The debate's ID
-   * @return array An array of the debate's info
+   * @param int $id The post's ID
+   * @return array An array of the post's info
    */
   public function get_basic_info($id) {
     return $this->db->get_where('posts', array('id'=>$id))
@@ -106,7 +106,7 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Check if debate exists
+   * Check if post exists
    *
    * @param int $id Debate ID
    */
@@ -118,7 +118,7 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Create a debate
+   * Create a post
    * @param string $content The text of the post
    * @return array|bool If creation was successful an array will be returned; on failure false will be returned
    */
@@ -157,7 +157,7 @@ class Debate_model extends CI_Model {
         
         if ($this->mentions->user_exists($m)) {
           $userid = $this->mentions->get_userid($m);
-          $this->alert->create($userid, 'mention', 'debate', $data['id']);
+          $this->alert->create($userid, 'mention', 'post', $data['id']);
         }
 
       }
@@ -167,8 +167,8 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Delete a debate
-   * @param  int $id The debate ID to delete
+   * Delete a post
+   * @param  int $id The post ID to delete
    * @return bool
    */
   public function delete($id) {
@@ -184,14 +184,14 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Get the HTML for a debate from view template
+   * Get the HTML for a post from view template
    *
-   * @param array $data The debate's info
+   * @param array $data The post's info
    * @param bool $list Whether or not there are multiple posts in $data
-   * @param bool $debate_page Whether or not user is on a debate page
+   * @param bool $post_page Whether or not user is on a post page
    * @return string The HTML for the post
    */
-  public function post_html($data, $list = false, $debate_page = false) {
+  public function post_html($data, $list = false, $post_page = false) {
     $this->load->helper('format_post');
     // If $list is true, then we have multiple posts
     if($list) {
@@ -199,9 +199,9 @@ class Debate_model extends CI_Model {
     }
     // Else, we have only one post
     else {
-      // Whether or not we are on a debate page
-      if($debate_page) {
-        $data['debate_page'] =  true;
+      // Whether or not we are on a post page
+      if($post_page) {
+        $data['post_page'] =  true;
       }
       // Allow the foreach loop to still loop the item (will loop once)
       $data = array('posts' => array($data));
@@ -211,9 +211,9 @@ class Debate_model extends CI_Model {
   }
 
   /**
-   * Gets the up and down vote counts of a debate
+   * Gets the up and down vote counts of a post
    *
-   * @param int $id The debate's ID
+   * @param int $id The post's ID
    * @return array The up and down vote counts
    */
   public function get_vote_counts($id) {
@@ -240,7 +240,7 @@ class Debate_model extends CI_Model {
    * This method "syncs" the vote columns on the posts table
    * with the actual vote counts in the votes table.
    *
-   * @param int $id The ID of the debate
+   * @param int $id The ID of the post
    * @return void
    */
   public function sync_vote_columns($id) {
@@ -254,7 +254,7 @@ class Debate_model extends CI_Model {
    * Insert a vote into the DB
    *
    * @param string $type The type of vote (up or down)
-   * @param int $id The ID of the debate
+   * @param int $id The ID of the post
    * @return bool
    */
   public function vote($type, $id) {
@@ -284,7 +284,7 @@ class Debate_model extends CI_Model {
       // Notify the post owner
       $this->load->library('alert');
       $alert_type = $vote === 1 ? 'like' : 'dislike';
-      $this->alert->create($info['userid'], $alert_type, 'debate', $id);
+      $this->alert->create($info['userid'], $alert_type, 'post', $id);
       return true;
     }
     else {
@@ -295,7 +295,7 @@ class Debate_model extends CI_Model {
 
   /**
    * Remove (undo) a vote
-   * @param int $id The ID of the debate
+   * @param int $id The ID of the post
    * @return bool
    */
   public function remove_vote($id) {
@@ -312,5 +312,5 @@ class Debate_model extends CI_Model {
 
 }
 
-/* End of file debate_model.php */
-/* Location: ./application/models/debate_model.php */
+/* End of file post_model.php */
+/* Location: ./application/models/post_model.php */

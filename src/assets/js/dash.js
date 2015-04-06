@@ -10,9 +10,7 @@ var Dash = Dash || {
 	// offset is 5 because php loads 5
 	offset: 5,
 
-	init: function () {
-		this.bind();
-	},	
+	loading_container: '$l',
 
 	feed: {
 		init: function (elem, type) {
@@ -39,7 +37,7 @@ var Dash = Dash || {
 					}
 
 					var elem = jQuery(data.html);
-	                $(Dash.feed_container).append(elem).imagesLoaded( function() { $(Dash.feed_container).masonry('appended', elem, true); });
+	                $(Dash.feed_container).imagesLoaded( function() { $(Dash.feed_container).append(elem).masonry('appended', elem, true).masonry(); });
 				});
 			}
 		},
@@ -58,11 +56,10 @@ var Dash = Dash || {
 	},
 
 	load_masonry: function () {
-	   $(Dash.feed_container).masonry({
-	      "itemSelector": '.item-masonry',
-	      "columnWidth": 250,
-	      "isFitWidth": true
-	   });
+	    $(Dash.feed_container).masonry({
+	        itemSelector: '.item-masonry',
+	        isFitWidth: true
+	    });
 	}
 
 }

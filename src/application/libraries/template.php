@@ -57,12 +57,21 @@ class Template {
         $this->set('show_hero', $show_hero);
       }
 
-      if (isset($view_data['full_bg'])) {
-        $full_bg = $view_data['full_bg'];
-        $this->set('full_bg', $full_bg);
+      if (isset($view_data['pride'])) {
+        $pride = $view_data['pride'];
+        $this->set('pride', $pride);
       } else {
-        $full_bg = false;
-        $this->set('full_bg', $full_bg);
+        $pride = true;
+        $this->set('pride', $pride);
+      }
+
+      if (isset($view_data['feed']) && isset($view_data['feed_container'])) {
+        $feed = $view_data['feed'];
+        $feed_container = $view_data['feed_container'];
+        $this->set('feed', $feed);
+        $this->set('feed_container', $feed_container);
+      } else {
+        $this->set('feed', false);
       }
 
       $contents = $CI->load->view($view, $view_data, true);

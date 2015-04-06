@@ -22,6 +22,7 @@ class Search extends CI_Controller {
    * 
    * @return [type] [description]
    */
+  
   public function index() {
     $query = $this->input->get('q');
     if($query) {

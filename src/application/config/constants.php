@@ -36,7 +36,7 @@ define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
 define('COMMENT_DISPLAY_LIMIT', 3);
 
 // The site image
-define('SITE_IMG', 'https://ununsplash.imgix.net/photo-1421217336522-861978fdf33a?q=75&fm=jpg&s=833ba209bee18b5115db745aa9541234');
+define('SITE_IMG', 'https://download.unsplash.com/photo-1424912599891-40e671ad91e3');
 
 // The number of posts to display on dashboard (before more are loaded)
 define('POST_DISPLAY_LIMIT', 5);

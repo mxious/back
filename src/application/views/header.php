@@ -11,23 +11,17 @@
 <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Oleo+Script' rel='stylesheet' type='text/css'>
-
-<?=$extra_stylesheets?>
-
 <script>
-  emojify.setConfig({
-      img_dir          : '/assets/img/emoji',  
-      ignored_tags     : {                
-          'SCRIPT'  : 1,
-          'TEXTAREA': 1,
-          'A'       : 1,
-          'PRE'     : 1,
-          'CODE'    : 1
-      }
-  });
-
-  emojify.run();
-
+Mxious.init({
+  mode: 'development',
+  userid: <?=session_get('userid')?>,
+  // show some pride!
+  show_pride: <?=$pride?>,
+  <?php if ($feed == true): ?>
+	  // is there a feed container in this page?
+	  feed: true,
+	  dash_container: <?=$feed_container?>
+  <?php endif; ?>
 });
-
 </script>
+<?=$extra_stylesheets?>

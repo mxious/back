@@ -17,10 +17,10 @@ class Search_model extends CI_Model {
    * @return string The results
    */
   public function get_results($query, $offset = 0) {
-    $this->load->model('debate_model');
+    $this->load->model('post_model');
     $params = array('query' => $query);
     $limit = 20;
-    $results = $this->debate_model->get_posts('search', $offset, $limit, $params);
+    $results = $this->post_model->get_posts('search', $offset, $limit, $params);
     return $results;
   }
 

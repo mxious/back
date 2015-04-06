@@ -137,7 +137,7 @@ class Employee_model extends CI_Model {
 
   public function delete_post($id) {
 
-    return $this->db->delete('debates', array('id'=>$id));
+    return $this->db->delete('posts', array('id'=>$id));
     
   }
 

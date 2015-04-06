@@ -1,3 +1,7 @@
+body {
+margin-left: 225px;
+
+}
 .icon-block {
   padding: 0 15px;
 }
@@ -12,7 +16,7 @@ nav .brand-logo {
 
 
 #index-banner {
-  height: 270px;
+  height: 350px;
 }
 
 logo:before {
@@ -26,8 +30,12 @@ logo:before {
 	font-size: 28px;
 }
 
+.oleo-f sub {
+  font-family: Roboto;
+  font-size: 15px;
+}
 .main-container {
-    margin-top: 37px;
+    margin-top: 75px;
     color: white;
     display: -webkit-flex;
     -webkit-flex-direction: column;
@@ -43,7 +51,7 @@ logo:before {
 
 
 .parallax-container {
-  height: 270px;
+  height: 350px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
@@ -223,5 +231,73 @@ footer.page-footer {
 /* icon prefix focus color */
 .input-field .prefix.active {
  color: #f57f17;
+} 
+
+nav {
+  width: 225px;
 }
-        
+.action-bar {
+  position: fixed;
+  word-wrap: break-word;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  border-radius: 0px;
+  border: 0px;
+  z-index: 1030;
+  margin-top: 0;
+  line-height: inherit;
+  padding-top: 25px;
+}
+
+.logo-bar {
+  width: 225px;
+  background-color: white;
+  height: 65px;
+}
+
+.action-bar .btn-flat {
+    width: 100%;
+    border-radius: 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.action-bar .btn-flat i {
+    font-size: 1rem;
+}
+
+.action-bar input {
+  width: 85%;
+  border: 1px solid #f57f17;
+  border-radius: 3px;
+  height: 35px;
+  padding: 10px 10px 10px 10px;
+  font-size: 15px;
+}
+
+.action-bar input:focus {
+  outline: none;
+}
+
+.action-bar footer {
+  height: 100px;
+  position:fixed;
+  bottom:0px;
+  width: 225px;
+}
+
+.action-bar footer a {  
+
+  color: inherit;
+  font-size: 13px;
+}
+.action-bar footer div {  
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.copy {
+  color: gray;
+  font-size: 12px;
+}

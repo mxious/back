@@ -148,22 +148,22 @@ class Alert {
       case 'dislike':
       case 'mention':
         $this->CI->db->select('d.time, u.username')
-                     ->from('debates d')
+                     ->from('posts d')
                      ->join('users u', 'd.userid = u.id', 'inner')
                      ->where('d.id', $data['object_id'])
                      ->limit(1);
         $info = $this->CI->db->get()->row_array();
-        $url = 'debate/'.strtolower($info['username']).'/'.$info['time'];
+        $url = 'post/'.strtolower($info['username']).'/'.$info['time'];
       break;
       case 'comment':
         $this->CI->db->select('d.time, u.username')
                      ->from('comments c')
-                     ->join('debates d', 'c.postid = d.id', 'inner')
+                     ->join('posts d', 'c.postid = d.id', 'inner')
                      ->join('users u', 'd.userid = u.id', 'inner')
                      ->where('c.id', $data['object_id'])
                      ->limit(1);
         $info = $this->CI->db->get()->row_array();
-        $url = 'debate/'.strtolower($info['username']).'/'.$info['time'].'#comment_'.$data['object_id'];
+        $url = 'post/'.strtolower($info['username']).'/'.$info['time'].'#comment_'.$data['object_id'];
       break;
       /*case 'follow':
         $this->load->model('people_model');
@@ -220,9 +220,9 @@ class Alert {
 
   /*private function object_link_text($type) {
     switch($type) {
-      case 'debate':
+      case 'post':
       case 'comment':
-        $text = 'debate';
+        $text = 'post';
       break;
       default:
         $text = '';

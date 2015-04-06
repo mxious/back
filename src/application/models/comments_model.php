@@ -113,7 +113,7 @@ class Comments_model extends CI_Model {
                           ->where('postid', $postid)
                           ->count_all_results();
     $this->db->where('id', $postid);
-    return $this->db->update('debates', array('comments_count'=>$new_count));
+    return $this->db->update('posts', array('comments_count'=>$new_count));
   }
 
   /**

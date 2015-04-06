@@ -64,10 +64,10 @@ class Account extends CI_Controller {
     }
     else {
       // Load the login page view
+
       $data['title'] = 'Sign in';
       $data['show_hero'] = false;
       $data['full_bg'] = false;
-      $data['stylesheets'] = array('assets/css/bootstrap-social.css');
       $this->template->load('account/login', $data);
     }
 
@@ -167,135 +167,10 @@ class Account extends CI_Controller {
     }
   }
 
-  /**
-   * Forgot password page
-   * URL: /account/forgot_password
-   * @param string $token Reset password token. If a token is present (and valid), it will show the reset password form.
-   */
-  public function forgot_password($token = null) {
 
-    $data['fixed_container'] = true;
-
-    // If token is provided...
-    if($token) {
-      // Load the reset pass page view
-      $data['title'] = 'Reset Password';
-      $data['token'] = $token;
-      $this->template->load('account/reset_password', $data);
-    }
-    else {
-      // Load the forgot pass page view
-      $data['title'] = 'Forgot Password';
-      $this->template->load('account/forgot_password', $data);
-    }
+  function test_endpoint() {
+    echo "{'success': 'true', 'data': 'test'}";
   }
-
-  /**
-   * Resets forgot password form.
-   * URL: /account/reset_password
-   */
-  public function reset_password($token) {
-
-      if (is_numeric($token) & isset($token)) {
-
-        $tkdata = $this->account_model->retrieve_info_token($token);
-
-        if ($tkdata == false) {
-
-          die();
-
-        } else {
-          $pw = $this->input->post('newpw');
-          if ($pw !== "" and $pw !== null) {
-
-            $uid = $tkdata['userid'];
-            $newpw = $this->input->post('newpw');
-            $tkdata = $this->account_model->change_password_uid($uid, $newpw);
-            $this->account_model->delete_password_token($tkdata['token']);
-            redirect("login");
-
-          } else {
-
-          $uid = $tkdata['userid'];
-          $data['title'] = 'Change Password';
-          $this->template->load('account/reset_password', $data);
-
-        }
-        
-      }
-
-    } else {
-
-      die();
-
-    }
-
-  }
-
-  
- /**
-   * Processes tours
-   * URL: /account/tour
-   */
-  public function tour($boolean) {
-    switch ($boolean) {
-      case "true":
-        $this->php_session->set('tour', true);
-        echo "ok";
-        break;
-      
-      case "false":
-        echo "no";
-        $this->php_session->set('tour', false);
-        break;
-    }
-  }
-    
-
-  /**
-   * Processes the forgot password form.
-   * URL: /account/forgot_password_submit
-   */
-  public function forgot_password_submit() {
-    $email = $this->input->post('email');
-
-    // Get the user's info by their email
-    $this->load->model('people_model');
-    $info = $this->people_model->get_info($email, 'email', 'id, username, email');
-
-    // If user doesn't exist
-    if(!$info) {
-      msg('Sorry, that email address is not associated with any account on Alphasquare.');
-      redirect('account/forgot_password');
-    }
-
-    $id = $info['id'];
-
-    // Generate a forgot pass token
-    $token = $this->account_model->create_password_token($id);
-
-    // If token was created, send the email
-    if($token) {
-      $this->load->library('custom_email');
-      $email_data = array(
-        'subject' => 'Reset your password on Alphasquare',
-        'type' => 'reset_password',
-        'to' => $info['email'],
-        'token' => $token
-      );
-      $this->custom_email->set_data($email_data);
-      if($this->custom_email->send()) {
-        msg('We have sent an email to <b>'.$info['email'].'</b> with further instructions. If you didn\'t get the email, please check your spam folder.', 'info');
-        redirect('login');
-      }
-
-    }
-    else {
-      msg('An error occurred. Please try again.');
-      redirect('account/forgot_password');
-    }
-  }
-
 }
 
 /* End of file account.php */
