@@ -57,6 +57,12 @@ class Template {
         $this->set('show_hero', $show_hero);
       }
 
+      if (session_get('userid') == null) {
+        echo $this->set('cur_userid', 0);
+      } else {
+        echo $this->set('cur_userid', session_get('userid'));
+      }
+
       if (isset($view_data['pride'])) {
         $pride = $view_data['pride'];
         $this->set('pride', $pride);

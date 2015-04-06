@@ -56,7 +56,7 @@ var Mxious = Mxious || {
 				Dash.init();
 				Dash.feed.init('#layout', 'explore');
 			});
-		})
+		};
 
 		// run required things
 		this.bind();
@@ -94,24 +94,6 @@ var Mxious = Mxious || {
 	}
 
 }
-
-Mxious.init({
-	mode: 'development',
-	userid: 5,
-	dash_container: '#layout',
-	// show some pride!
-	show_pride: true
-});
-
-(function($){
-  $(function(){
-
-	$('.button-collapse').sideNav();
-
-  });
-})(jQuery);
-
-
 
 $(function(){
 	$('.tooltipped').tooltip({delay: 50});
