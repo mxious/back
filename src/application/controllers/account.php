@@ -146,7 +146,7 @@ class Account extends CI_Controller {
 	      $data['recaptchaerror'] = true;
 	      $data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
 	      $data['title'] = 'Register';
-	      $data['fixed_container'] = true;
+	      $data['show_hero'] = false;
 	      $data['errors'] = validation_errors();
 	      $data['stylesheets'] = array('assets/css/bootstrap-social.css');
 	      $this->template->load('account/register', $data);
@@ -160,7 +160,7 @@ class Account extends CI_Controller {
     	$data['recaptchaerror'] = false;
       $data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
       $data['title'] = 'Register';
-      $data['fixed_container'] = true;
+      $data['show_hero'] = false;
       $data['errors'] = validation_errors();
       $data['stylesheets'] = array('assets/css/bootstrap-social.css');
       $this->template->load('account/register', $data);
