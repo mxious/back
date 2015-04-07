@@ -12,23 +12,6 @@
 // Page to go to when user first registers
 define('REGISTER_REDIRECT', 'dashboard');
 
-
-/*
-	Constant for the CDN (turn off in development environments.) 
-	=======================================================================
-
-	And here's a friendly reminder on what to do on develop environments.
-	Don't EVER enable this on a development environment. You will spend hours
-	trying to know why your changes weren't applying. Scratching your head like
-	what is wrong with this!? Turns out you are USING THE CDN.
-	Take it from prior experience.
-	Set the boolean to false on development environments and save yourself
-	some time. 
-
- */
-
-define('USE_CDN', false);
-
 // Email address for sys emails
 define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
 
