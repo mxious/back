@@ -29,7 +29,7 @@ class Main extends CI_Controller {
 				'assets/css/home.css',
 				'http://fonts.googleapis.com/css?family=Lato:700'
 			);
-			$posts = $this->post_model->get_posts('explore', 0, 0);
+			$posts = $this->post_model->get_posts('explore', 0);
 			// Turn $posts array into HTML
 			$data['posts'] = $this->post_model->post_html($posts, true);
 			$this->template->load('home', $data);

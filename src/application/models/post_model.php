@@ -20,50 +20,51 @@ class Post_model extends CI_Model {
    */
   public function get_posts($type, $offset = 0, $limit = POST_DISPLAY_LIMIT, $params = array()) {
     $userid = $this->php_session->get('userid');
-    $this->db->select('d.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
-             ->from('posts d')
+    $this->db->select('p.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
+             ->from('posts p')
              // Get post owner's info
-             ->join('users u', 'u.id = d.userid', 'inner')
+             ->join('users u', 'u.id = p.userid', 'inner')
              // Get the vote that the logged in user made on this post
-             ->join('votes v', "v.postid = d.id AND v.userid = '{$userid}'", 'left');
+             ->join('votes v', "v.postid = p.id AND v.userid = '{$userid}'", 'left');
 
     // If latest_id param is present, add a statement to the WHERE clause
     if(isset($params['latest_id']) && $params['latest_id'] > 0) {
-      $this->db->where('d.id > '.$params['latest_id'], null, false);
+      $this->db->where('p.id > '.$params['latest_id'], null, false);
     }
 
     switch($type) {
       case 'dashboard':
         // User is on the dashboard
         // Select posts by users that the logged in user is following or their own posts
-        $this->db->where("(d.userid IN
+        $this->db->where("(p.userid IN
                             (
                               SELECT followid
                               FROM following
                               WHERE userid = '{$userid}'
                             )
-                          OR d.userid = '{$userid}' )", null, false);
+                          OR p.userid = '{$userid}' )", null, false);
       break;
       case 'explore':
       break;
       case 'profile':
         // User is on a profile
         // Select posts by the profile user
-        $this->db->where('d.userid', $params['user_id']);
+        $this->db->where('p.userid', $params['user_id']);
       break;
       case 'search':
         // Searching posts
-        $this->db->like('d.content', $params['query'], 'both');
+        $this->db->like('p.content', $params['query'], 'both');
       break;
     }
 
-      $this->db->order_by('d.time', 'desc');
+      $this->db->order_by('p.time', 'desc');
     
 
     if(!$limit) $limit = POST_DISPLAY_LIMIT; 
     $this->db->limit($limit, $offset);
 
     $results = $this->db->get()->result_array();
+    
 
     return $results;
   }
@@ -79,12 +80,12 @@ class Post_model extends CI_Model {
     $userid = $this->php_session->get('userid');
     $where = array(
       'u.username' => $username,
-      'd.time' => $timestamp
+      'p.time' => $timestamp
     );
-    $this->db->select('d.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
+    $this->db->select('p.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
              ->from('posts d')
-             ->join('users u', 'u.id = d.userid', 'left')
-             ->join('votes v', 'v.postid = d.id AND v.userid = "'.$userid.'"', 'left')
+             ->join('users u', 'u.id = p.userid', 'left')
+             ->join('votes v', 'v.postid = p.id AND v.userid = "'.$userid.'"', 'left')
              ->where($where)
              ->limit(1);
     $info = $this->db->get()->row_array();
