@@ -1,15 +1,15 @@
-# Alphasquare
-Source code for the Alphasquare social debating application.
+# Mxious
+Source code for the Mxious social music application.
 
 Installing
 ==========
-To install an instance of Alphasquare, check the wiki's article for that:
-https://github.com/Alphasquare/Alphasquare/wiki/Installing
+To install an instance of Mxious, check the wiki's article for that:
+https://github.com/Mxious/Mxious/wiki/Installing
 
 Before contributing
 ====================
 Before contributing, please read the Contributing standards found in
-https://github.com/Alphasquare/Alphasquare/wiki/Code-Quality-&-Formatting-Guide.
+https://github.com/Mxious/Mxious/wiki/Code-Quality-&-Formatting-Guide.
 We don't accept any pull requests/commits that do not comply with these standards. 
 Failure to comply with these standards multiple times may cause:
 
@@ -25,12 +25,12 @@ Please try to comply.
 Requirements
 ===============
 PHP 5 or HHVM (we use HHVM in production)
-Short tags = No (from longing-lion forwards or Alphasquare 2.0 alpha)
+Short tags = No (from longing-lion forwards or Mxious 2.0 alpha)
 MySQL
 
 Social
 ===============
-Check out the website `alphasquare.us` for social discussion of the code.
+Check out the website `Mxious.us` for social discussion of the code.
 
 Warning
 ===============
