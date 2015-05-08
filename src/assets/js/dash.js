@@ -22,13 +22,21 @@ var Dash = Dash || {
 				}
 			});
 		},
+
+		load_masonry: function () {
+		    $(Dash.feed_container).masonry({
+		        itemSelector: '.item-masonry',
+		        isFitWidth: true
+		    });
+		},
+		
 		ajax: {
 			load_more: function (type) {
 				$.getJSON('post/load_more', {offset: Dash.offset, type: type}).done(function (data) {
 					elem = $(Dash.feed_container);
 					offset = Dash.offset + data.count;
 					Dash.offset = offset;
-					if (Mxious.mode == "development") {
+					if (Main.mode == "development") {
 						debug = {
 							offset: offset,
 							container: Dash.feed_container
@@ -53,13 +61,6 @@ var Dash = Dash || {
 
 	bind: function () {
 
-	},
-
-	load_masonry: function () {
-	    $(Dash.feed_container).masonry({
-	        itemSelector: '.item-masonry',
-	        isFitWidth: true
-	    });
 	}
 
 }
