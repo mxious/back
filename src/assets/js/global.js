@@ -74,7 +74,6 @@ var Main = Main || {
 
 		// run required things
 		this.bind();
-		//this.nodes();
 		//this.misc();
 
 		$('.parallax').imagesLoaded(function () {
