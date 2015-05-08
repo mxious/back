@@ -88,6 +88,7 @@ var Main = Main || {
 			event.preventDefault();
 			Dash.ajax.load_more('explore');
 		});
+		$('.tooltipped').tooltip({delay: 50});
 	},
 
 	nodes: function () {
@@ -108,7 +109,3 @@ var Main = Main || {
 	}
 
 }
-
-$(function(){
-	$('.tooltipped').tooltip({delay: 50});
-});
