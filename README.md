@@ -1,4 +1,6 @@
 # Mxious
+[![Code Climate](https://codeclimate.com/github/Mxious/Mxious/badges/gpa.svg)](https://codeclimate.com/github/Mxious/Mxious)
+
 Source code for the Mxious social music application.
 
 Installing
