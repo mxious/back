@@ -13,9 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Points {
 
 	public function __construct() {
-
     	$this->CI =& get_instance();
-
     }
 
 	/**
@@ -25,12 +23,9 @@ class Points {
 	 * 
 	 */
 	
-	public function pointsCheck() {
-
+	public function get() {
 		$points = $this->CI->php_session->get('points');
-
 		return $points;
-
 	}
 
 	/**
@@ -40,18 +35,12 @@ class Points {
 	 *  
 	 */
 	
-	public function addPoints($amount = 0) {
-
+	public function add($amount = 0) {
 		$points = $this->CI->php_session->get('points');
-
 		$userid = $this->CI->php_session->get('userid');
-
 		$result = $points + $amount;
-
 		$this->CI->php_session->set('points', $result);
-
 		$this->CI->db->update('users', array('points'=>$result), array('id' => $userid));
-
 	}
 	
 	/**
@@ -61,18 +50,12 @@ class Points {
 	 *  
 	 */
 	
-	public function removePoints($amount = 0) {
-
+	public function remove($amount = 0) {
 		$points = $this->CI->php_session->get('points');
-
 		$userid = $this->CI->php_session->get('userid');
-
 		$result = $points - $amount;
-
 		$this->CI->php_session->set('points', $result);
-
 		$this->CI->db->update('users', array('points'=>$result), array('id' => $userid));
-
 	}
 
 

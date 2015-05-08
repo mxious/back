@@ -131,7 +131,7 @@ class Post_model extends CI_Model {
     );
 
     $this->load->library('points');
-    $this->points->addPoints(5);
+    $this->points->add(5);
 
     $insert = $this->db->insert('posts', $data);
     if($insert) {
@@ -176,7 +176,7 @@ class Post_model extends CI_Model {
 
     
       $this->load->library('points');
-      $this->points->removePoints(5);
+      $this->points->remove(5);
     
 
     return $this->db->delete('posts', array('id'=>$id));

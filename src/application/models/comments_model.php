@@ -61,7 +61,7 @@ class Comments_model extends CI_Model {
     );
 
     $this->load->library('points');
-    $this->points->addPoints(3);
+    $this->points->add(3);
 
     $created = $this->db->insert('comments', $data);
     // If it was created
