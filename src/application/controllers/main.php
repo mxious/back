@@ -32,6 +32,8 @@ class Main extends CI_Controller {
 			$posts = $this->post_model->get_posts('explore', 0);
 			// Turn $posts array into HTML
 			$data['posts'] = $this->post_model->post_html($posts, true);
+			$data['feed'] = true;
+			$data['feed_container'] = '#layout';
 			$this->template->load('home', $data);
 		}
 

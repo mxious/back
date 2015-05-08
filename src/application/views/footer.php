@@ -6,15 +6,16 @@
 
   <!-- FIRE DEM MXIOUS JS UPPPP -->
   <script>
-  Mxious.init({
+  Main.init({
     mode: 'development',
     userid: <?=$cur_userid?>,
     // show some pride!
     show_pride: <?=$pride?>,
+
     <?php if ($feed): ?>
-  	  // is there a feed container in this page?
   	  feed: true,
-  	  dash_container: <?=$feed_container?>
+  	  dash_container: '<?=$feed_container?>'
     <?php endif; ?>
+
   });
   </script>
