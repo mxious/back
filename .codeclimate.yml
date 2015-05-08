@@ -7,3 +7,4 @@ exclude_paths:
  - src/application/libraries/Markdown.php
  - src/application/third_party/*
  - src/application/libraries/Recaptcha.php
+ - src/index.php
