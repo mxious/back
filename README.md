@@ -1,5 +1,5 @@
 # Mxious
-[![Build Status](https://travis-ci.org/Mxious/Mxious.svg)](https://travis-ci.org/Mxious/Mxious) [![Code Climate](https://codeclimate.com/github/Mxious/Mxious/badges/gpa.svg)](https://codeclimate.com/github/Mxious/Mxious)
+[![Build Status](https://travis-ci.org/Mxious/Mxious.svg)](https://travis-ci.org/Mxious/Mxious) [![Code Climate](https://codeclimate.com/github/Mxious/Mxious/badges/gpa.svg)](https://codeclimate.com/github/Mxious/Mxious) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Mxious/Mxious?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Source code for the Mxious social music application.
 
