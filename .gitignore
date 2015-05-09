@@ -1,0 +1,6 @@
+src/*/avatars
+src/*/avatars/*
+src/application/config/database.php
+src/src/application/config/config.php
+src/application/config/database.php.sm
+src/application/config/config.php.sm
