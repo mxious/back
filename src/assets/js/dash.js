@@ -16,6 +16,10 @@ var Dash = Dash || {
 		init: function (elem, type) {
 			Dash.feed_container = elem;
 
+			if($(window).height() >= $('#feed_measure').height()){
+				Dash.feed.ajax.load_more(type);
+			}
+
 			$(window).scroll(function(){
 				if ($(window).scrollTop() == $(document).height() - $(window).height()){
 					Dash.feed.ajax.load_more(type);

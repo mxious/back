@@ -1,3 +1,3 @@
-<div class="row" id="layout">
-<?=$posts?>
+<div class="row" id="feed">
+	<?=$posts?>
 </div>

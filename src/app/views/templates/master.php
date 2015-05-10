@@ -8,7 +8,7 @@
 </head>
 <body class="grey lighten-2">
 <?php $this->load->view('navbar'); echo "\n"; ?>
-<?php if($show_hero == true) { $this->load->view('templates/hero'); } ?>
+<?php if($show_hero == true and !$this->php_session->get('loggedin')) { $this->load->view('templates/hero'); } ?>
 
 <?php $this->load->view('templates/no_script'); echo "\n"; ?>
 
