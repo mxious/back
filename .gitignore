@@ -1,4 +1,4 @@
-src/*/avatars
-src/*/avatars/*
-src/app/config/database.php
-src/src/app/config/config.php
+*/avatars
+*/avatars/*
+application/config/database.php
+application/config/config.php
