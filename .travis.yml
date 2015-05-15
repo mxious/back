@@ -1,0 +1,10 @@
+language: php
+php:
+  - 5.4
+  - hhvm
+
+before_script:
+  - mysql -e 'create database mxious;'
+  - mv application/config/database.php.sm src/application/config/database.php
+  - mv application/config/config.php.sm src/application/config/config.php
+  - mysql -u travis -p mxious < tools/sql/mxious_unit_testing.sql
