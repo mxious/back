@@ -110,8 +110,8 @@ class Account extends CI_Controller {
     $this->load->library('recaptcha');
 
     // Set all the rules
-    $this->form_validation->set_rules('username', 'Username', 'required|trim|xss_clean|alpha_dash|valid_username|is_unique[users.username]');
-    $this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|valid_email|is_unique[users.email]');
+    $this->form_validation->set_rules('username', 'Username', 'required|trim|alpha_dash|valid_username|is_unique[users.username]');
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
     $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
     $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
 
@@ -133,7 +133,7 @@ class Account extends CI_Controller {
     	        // If they were registered, log them in
     	        $this->account_model->authenticate($username, $password);
     	        // Show an alert box
-    	        msg("<strong>Welcome to Alphasquare!</strong> Get started by posting a debate. Go ahead; don't be shy!", 'info', 'text-align:center;font-size:15px;');
+    	        msg("<strong>Welcome to Mxious!</strong> Get started by talking about an album, song, or artist you like.", 'info', 'text-align:center;font-size:15px;');
     	        // Go to dashboard
               $this->php_session->set('tour', true);
     	        redirect(REGISTER_REDIRECT);

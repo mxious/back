@@ -25,50 +25,37 @@
 
 var Main = Main || {
 	// Define some variables
-	mode: "development",
 	userid: "",
+	// set a default feed container 
+	feed_container: "#feed_container",
 	// turn it on manually on each page you use it on.
 	feed: false,
 
 	init: function (params) {
-
-		if (params.show_pride == true) {
-			console.log("     _ __ ___ __  __    ");
-			console.log("    | '_ ` _ \\\ \\/ /    ");
-			console.log("    | | | | | |>  < _   ");
-			console.log("    |_| |_| |_/_/\\_(_)  ");
-			console.log("   ------------------  ");
-			console.log("  where the dreamers go  ");
-			console.log("   ------------------  ");
-			console.log(" mxious open-source v1.0.1 ");
-			console.log("   ------------------  ");
-
-		}
-
+		console.log("Initializing Mxious.js");
 		if (params.feed == true) {
-			var container = params.feed_container;
+			console.log("Initializing Feed.js");
 			var type = params.feed_type;
+			if ('feed_container' in params) {
+				container = params.feed_container;
+			} else {
+				container = Main.feed_container;
+			}
 
 			// hide the layout (hackish)
-			$('#layout').hide();
+			$(container).hide();
 
-			$('#layout').imagesLoaded(function () {
-				$('#layout').show();
-				Dash.feed.load_masonry();
-				Dash.feed.init();
-				Dash.feed.init(container, type);
+			$(container).imagesLoaded(function () {
+				$(container).show();
+
+				Feed.init(container, type);
 			});
 			
 		};
 
 		// run required things
 		this.bind();
-		//this.misc();
-
-		$('.parallax').imagesLoaded(function () {
-			$('.parallax').parallax();
-		});        
-	
+		//this.misc();	
 	},
 
 	bind: function () {
@@ -77,11 +64,10 @@ var Main = Main || {
 			Dash.ajax.load_more('explore');
 		});
 		$('.tooltipped').tooltip({delay: 50});
-	},
 
-	nodes: function () {
-		this.post.init();
-		this.comment.init();
+		$('.parallax').imagesLoaded(function () {
+			$('.parallax').parallax();
+		});        
 	},
 
 	ajax: {
