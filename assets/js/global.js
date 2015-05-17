@@ -46,21 +46,9 @@ var Main = Main || {
 		}
 
 		if (params.feed == true) {
-			if (params.feed_container == true && params.feed_type) {
-				var container = params.feed_container;
-				var type = params.feed_type;
-			} else {
+			var container = params.feed_container;
+			var type = params.feed_type;
 
-				// when all hope is lost... revert to the default container and type...
-				// and hope it doesn't explode and kill you. 
-
-				// - Me <3
-
-				var container = "#layout";
-				var type = "explore";
-			}
-
-			this.feed = params.feed;
 			// hide the layout (hackish)
 			$('#layout').hide();
 
@@ -70,6 +58,7 @@ var Main = Main || {
 				Dash.feed.init();
 				Dash.feed.init(container, type);
 			});
+			
 		};
 
 		// run required things

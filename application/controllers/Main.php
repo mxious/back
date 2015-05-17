@@ -38,10 +38,8 @@ class Main extends CI_Controller {
 				$posts = $this->post_model->get_posts('explore', 0);
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
-				// tell the JS that there is a feed here
-				$data['feed'] = true;
-				// set a container for the feed
-				$data['feed_container'] = '#feed';
+
+				create_feed('#feed', '#explore');
 				$this->template->load('home', $data);
 
 				break;
@@ -59,10 +57,8 @@ class Main extends CI_Controller {
 				$posts = $this->post_model->get_posts('explore', 0);
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
-				// tell the JS that there is a feed here
-				$data['feed'] = true;
-				// set a container for the feed
-				$data['feed_container'] = '#feed';
+				
+				create_feed('#feed', '#explore');
 				$this->template->load('home', $data);
 				break;
 

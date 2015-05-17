@@ -71,11 +71,13 @@ class Template {
         $this->set('pride', $pride);
       }
 
-      if (isset($view_data['feed']) && isset($view_data['feed_container'])) {
+      if (isset($view_data['feed']) && isset($view_data['feed_container'])  && isset($view_data['feed_type'])) {
         $feed = $view_data['feed'];
         $feed_container = $view_data['feed_container'];
+        $feed_type = $view_data['feed_type'];
         $this->set('feed', $feed);
         $this->set('feed_container', $feed_container);
+        $this->set('feed_type', $feed_type);
       } else {
         $this->set('feed', false);
       }

@@ -1,8 +1,8 @@
   <!--Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="assets/js/materialize.js"></script>
-  <script src="assets/js/global.js"></script>
-  <script src="assets/js/dash.js"></script>
+  <script src="<?= base_url('assets/js/materialize.js'); ?>"></script>
+  <script src="<?= base_url('assets/js/global.js'); ?>"></script>
+  <script src="<?= base_url('assets/js/dash.js'); ?>"></script>
 
   <!-- FIRE DEM MXIOUS JS UPPPP -->
   <script>
@@ -14,7 +14,8 @@
 
     <?php if ($feed): ?>
   	  feed: true,
-  	  dash_container: '<?=$feed_container?>'
+  	  feed_container: '<?=$feed_container?>'
+      feed_type: '<?=$feed_type?>'
     <?php endif; ?>
 
   });
