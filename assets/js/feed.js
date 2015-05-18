@@ -31,12 +31,12 @@ var Feed = Feed || {
 
 	ajax: {
 		load_more: function () {
-			type = Feed.feed_type;
-			$.getJSON('post/load_more', {offset: Feed.offset, type: type}).done(function (data) {
-				elem = $(Main.feed_container);
-				offset = Feed.offset + data.count;
-				Feed.offset = offset;
-				debug = {
+			var type = Feed.feed_type;
+			$.getJSON('post/load_more', {offset: Feed.ajax_offset, type: type}).done(function (data) {
+				var elem = $(Main.feed_container);
+				var offset = Feed.ajax_offset + data.count;
+				Feed.ajax_offset = offset;
+				var debug = {
 					offset: offset,
 					container: Feed.container
 				};
