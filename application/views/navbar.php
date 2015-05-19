@@ -9,9 +9,9 @@
     </form>
     <br>
     <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-public"></i> Dashboard</a>
-    <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-whatshot"></i> Alerts</a>
-    <a href="login" id="signin" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-action-input"></i> Trending</a>
-    <a href="login" id="signin" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-action-input"></i> Discover</a>
+    <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-notifications"></i> Alerts</a>
+    <a href="people" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-people"></i> People</a>
+    <a href="trending" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-whatshot"></i> Trending</a>
   </div>
   <footer>
   <div>
