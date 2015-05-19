@@ -7,33 +7,6 @@ class People extends CI_Controller {
 		$this->load->model('people_model');
 		$this->load->model('account_model');
 	}
-	
-	/**
-	 * Display users
-	 * @param string $type type of users to display
-	 */
-	public function index($type) {
-		switch ($type) {
-			case 'trending':
-				$people = $this->people_model->get_list('trending');
-				$data['people'] = $people;
-			break;
-			case 'new':
-				$people = $this->people_model->get_list('new');
-				$data['people'] = $people;				
-			break;
-			case 'random':
-				$people = $this->people_model->get_list('random');
-				$data['people'] = $people;				
-			break;
-			default:
-				// default to a really sexy page asking the users what they want to discover
-			break;
-		}
-		$data['title'] = "People";
-		$this->template->load('people/page', $data);
-	}
-
 
 	/**
 	 * Follow a user
