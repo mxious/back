@@ -49,10 +49,10 @@ class People_model extends CI_Model {
    * Get array of users
    * 
    * @param string $order_type
-   * @param int $limit The number of users to return.
+   * @param int $limit The number of users to return. Defaults to a limit set in constants.php
    * @return array
    */
-  public function get_list($order_type, $limit = 50) {
+  public function get_list($order_type, $limit = PEOPLE_DISPLAY_LIMIT) {
     if($this->php_session->get('loggedin')) {
       $userid = $this->php_session->get('userid');
     }
@@ -60,7 +60,7 @@ class People_model extends CI_Model {
       $userid = 0;
     }
     switch($order_type) {
-      case 'popular':
+      case 'trending':
         $order_by = 'u.followers';
       break;
       case 'new':

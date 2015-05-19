@@ -18,6 +18,9 @@ define('SITE_IMG', 'https://download.unsplash.com/photo-1424912599891-40e671ad91
 // The number of posts to display on dashboard (before more are loaded)
 define('POST_DISPLAY_LIMIT', 5);
 
+// The number of people to display on discover page 
+define('PEOPLE_DISPLAY_LIMIT', 30);
+
 // Min Pass Length
 define('MIN_PASS_LENGTH', 6);
 
