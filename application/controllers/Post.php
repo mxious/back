@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * post Controller
+ * Post Controller
  * 
  * @package Controllers
  * @copyright (c) 2014 Alphasquare
 */
 
-class post extends CI_Controller {
+class Post extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
