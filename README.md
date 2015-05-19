@@ -27,17 +27,17 @@ Please try to comply.
 Requirements
 ===============
 PHP 5 or HHVM (we use HHVM in production)
-Short tags = No (from longing-lion forwards or Mxious 2.0 alpha)
+Short tags = No
 MySQL
 
 Social
 ===============
-Check out the website `Mxious.us` for social discussion of the code.
+Check out the website `Alphasquare.us` for social discussion of the code.
 
 Warning
 ===============
 
-Things in the ``develop`` branch are extremely unstable. Not for production. Please use files from ``master`` branch instead.
+Things in the ``develop`` branch are unstable.
 
 Extend
 ===============
