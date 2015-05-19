@@ -27,8 +27,8 @@ class Main extends CI_Controller {
 		switch ($this->loggedin) {
 			
 			case true:
-				// user is not logged in, explore page instead of dashboard.
-				$data['title'] = 'Explore';
+				// user is logged in, feed page instead of explore.
+				$data['title'] = 'Feed';
 				// load some stylesheets
 				$data['stylesheets'] = array(
 					'assets/css/home.css',
