@@ -59,9 +59,8 @@ class Comments_model extends CI_Model {
       'content' => $content,
       'time' => time()
     );
-
-    $this->load->library('points');
-    $this->points->add(3);
+  
+    $this->events->call(COMMENT_CREATE);
 
     $created = $this->db->insert('comments', $data);
     // If it was created
@@ -99,7 +98,7 @@ class Comments_model extends CI_Model {
    * @return bool Whether or not the comment deleted
    */
   public function delete($id) {
-
+      $this->events->call(COMMENT_DELETE);
   }
 
   /**

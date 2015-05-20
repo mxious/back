@@ -130,8 +130,7 @@ class Post_model extends CI_Model {
       'time' => time()
     );
 
-    $this->load->library('points');
-    $this->points->add(5);
+    $this->events->call(POST_CREATE);
 
     $insert = $this->db->insert('posts', $data);
     if($insert) {
@@ -175,9 +174,7 @@ class Post_model extends CI_Model {
   public function delete($id) {
 
     
-      $this->load->library('points');
-      $this->points->remove(5);
-    
+    $this->events->call(POST_DELETE);
 
     return $this->db->delete('posts', array('id'=>$id));
 

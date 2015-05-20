@@ -18,6 +18,7 @@ class People extends CI_Controller {
 			json_error('You cannot follow yourself.');
 		}
 		$follow = $this->people_model->follow('follow', $id);
+		$this->events->call(FOLLOW);
 		if($follow) {
 			json_output(null,true);
 		}
@@ -36,6 +37,7 @@ class People extends CI_Controller {
 			json_error('You cannot follow yourself.');
 		}
 		$follow = $this->people_model->follow('unfollow', $id);
+		$this->events->call(UNFOLLOW);
 		if($follow) {
 			json_output(null,true);
 		}
