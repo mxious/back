@@ -1,5 +1,7 @@
 # To-do list until stable
 
+Done to-do's are marked with ~~strikethrough.~~
+
 1. Fix bugs (isn't that obvious?)
 2. Discover functionality (people discover, trending posts, etc.)
 3. Profiles
