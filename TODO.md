@@ -16,6 +16,6 @@
 14. Tidy up the CSS and HTML and remove the hackish shit
 15. Push to stable
 16. Git merge conflicts can go to hell
-17. EVENT DRIVEN DESIGN (EVENTS LIBRARY JESUS CHRIST.)
+17. ***DONE** EVENT DRIVEN DESIGN (EVENTS LIBRARY JESUS CHRIST.)
 18. Remove the account events. I don't find it to be necessary at all.
-19. Increase compatibility with older PHP  versions (I love the bleeding edge, I know <3 )
+19. Increase compatibility with older PHP  versions (I love the bleeding edge, I know <3)
