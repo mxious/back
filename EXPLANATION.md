@@ -51,7 +51,8 @@ That then, does this on the JS.
 
 That adds an extra layer of complexity which is pretty annoying and adds overhead.
 
-OUR NEW PROPOSED WAY: ----------------------------------------------------------------------------------------------
+The new way
+=============
 
 Just load a view with this simple html:
 
