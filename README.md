@@ -1,5 +1,5 @@
 # Mxious
-[![Build Status](https://travis-ci.org/Mxious/Mxious.svg)](https://travis-ci.org/Mxious/Mxious) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Mxious/Mxious?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/Mxious/Mxious.svg)](https://travis-ci.org/Mxious/Mxious) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Mxious/Mxious/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Mxious/Mxious/?branch=develop) [![Gitter](https://img.shields.io/badge/chat-open-brightgreen.svg)](https://gitter.im/Mxious/Mxious?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Source code for the Mxious social music application. 
 
