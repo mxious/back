@@ -14,7 +14,7 @@ class Discover extends CI_Controller {
 		$this->load->model('account_model');
 	}
 	
-	public function people($type) {
+	public function people($type = '') {
 		switch ($type) {
 			case 'trending':
 				// dont set a limit, there's a constant for that
@@ -36,6 +36,39 @@ class Discover extends CI_Controller {
 				$data['title'] = 'Random';
 				$data['people'] = $people;
 				$this->template->load('discover/people');
+				break;
+			default:
+				echo "Default case.";
+				break;
+		}
+	}
+
+	public function posts($type = '') {
+		switch ($type) {
+			case 'trending':
+				// dont set a limit, there's a constant for that
+				$posts = $this->post_model->get_posts('discover', 'trending');
+				$data['posts'] = $this->post_model->post_html($posts, true);
+				$data['title'] = 'Trending';
+				$data['feed_settings'] = ['#feed', 'discover', 'trending'];
+				$this->template->load('discover/posts');
+				break;
+			case 'new':
+				// again dont set a limit, there's a constant for that
+				$posts = $this->post_model->get_posts('discover', 'new');
+				$data['posts'] = $this->post_model->post_html($posts, true);
+				$data['title'] = 'New';
+				$this->template->load('discover/posts');
+				break;
+			case 'random':
+				// and once again dont set a limit, there's a constant for that
+				$posts = $this->post_model->get_posts('discover', 'random');
+				$data['posts'] = $this->post_model->post_html($posts, true);
+				$data['title'] = 'Random';
+				$this->template->load('discover/posts');
+				break;
+			default:
+				echo "default case";
 				break;
 		}
 	}

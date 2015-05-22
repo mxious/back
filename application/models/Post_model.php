@@ -12,13 +12,13 @@ class Post_model extends CI_Model {
    * Get an array of posts depending on the params passed
    *
    * @param string $type The type of posts (dashboard, profile, etc.)
-   * @param string $order The order of the posts (asc or desc)
+   * @param string $order The order of the posts (asc, desc, trending, new, random)
    * @param int $offset The number of posts to start at
    * @param int $limit The number of posts to select (0 = all)
    * @param array $params An optional array of info (e.g. user id)
    * @return array An array of posts and their info
    */
-  public function get_posts($type, $offset = 0, $limit = POST_DISPLAY_LIMIT, $params = array()) {
+  public function get_posts($type, $order, $offset = 0, $limit = POST_DISPLAY_LIMIT, $params = array()) {
     $userid = $this->php_session->get('userid');
     $this->db->select('p.*, u.id as userid, u.username, u.email, u.avatar, v.vote')
              ->from('posts p')
@@ -32,6 +32,7 @@ class Post_model extends CI_Model {
       $this->db->where('p.id > '.$params['latest_id'], null, false);
     }
 
+    // Type, which posts should I show?
     switch($type) {
       case 'dashboard':
         // User is on the dashboard
@@ -44,8 +45,6 @@ class Post_model extends CI_Model {
                             )
                           OR p.userid = '{$userid}' )", null, false);
       break;
-      case 'explore':
-      break;
       case 'profile':
         // User is on a profile
         // Select posts by the profile user
@@ -55,9 +54,29 @@ class Post_model extends CI_Model {
         // Searching posts
         $this->db->like('p.content', $params['query'], 'both');
       break;
+      case 'discover':
+      break;
     }
 
-      $this->db->order_by('p.time', 'desc');
+    // Order, how should we format posts?
+    switch ($order) {
+      case 'desc':
+        $this->db->order_by('p.time', 'desc');
+        break;
+      case 'asc': 
+        $this->db->order_by('p.time', 'asc');
+        break;
+      case 'trending':
+        $this->db->order_by('p.up_votes', 'desc');
+        break;
+      case 'new':
+        // basically desc. why this? just for easy reading
+        $this->db->order_by('p.time', 'desc');
+        break;
+      case 'random':
+        $this->db->order_by('p.id', 'RANDOM');      
+        break;      
+    }
     
 
     if(!$limit) $limit = POST_DISPLAY_LIMIT; 

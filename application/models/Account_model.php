@@ -37,19 +37,12 @@ class Account_model extends CI_Model {
 				// Neither their username nor e-mail exist.
 				return false;
 			}
-			// We don't need an else clause here as we want to fall through in the event it was an e-mail login.
 		}
 		if ($info['password'] !== $password) {
-			if($info) {
-				// Log failed login event
-				$this->events->log('account', 'login_fail', null, $info['id']);
-			}
 			return false;
 		}
 		else {
 			$this->login($info);
-			// Login succeeded log in events
-			$this->events->log('account', 'login');
 			return true;
 		}
 	}
@@ -89,8 +82,6 @@ class Account_model extends CI_Model {
     );
     $insert = $this->db->insert('users', $data);
     if($insert) {
-      // Log creation
-      $this->events->log('account', 'create', null, $this->db->insert_id());
       return true;
     }
     else {

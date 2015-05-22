@@ -292,7 +292,7 @@ class People_model extends CI_Model {
     $this->db->where('id', $followid);
     $this->db->update('users');
   }
-
+  
 }
 
 /* End of file people_model.php */

@@ -16,7 +16,8 @@ define('COMMENT_DISPLAY_LIMIT', 3);
 define('SITE_IMG', 'https://download.unsplash.com/photo-1424912599891-40e671ad91e3');
 
 // The number of posts to display on dashboard (before more are loaded)
-define('POST_DISPLAY_LIMIT', 5);
+// WHEN MODIFYING THIS MAKE SURE TO UPDATE THE ajax_offset value in the Feed.js file.
+define('POST_DISPLAY_LIMIT', 15);
 
 // The number of people to display on discover page 
 define('PEOPLE_DISPLAY_LIMIT', 30);

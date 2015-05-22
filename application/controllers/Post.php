@@ -139,12 +139,18 @@ class Post extends CI_Controller {
     $limit = 10;
     $offset = $this->input->get('offset');
     $type = $this->input->get('type');
+    $order = $this->input->get('order');
+    // fallback to desc if no order is given
+    if ($order == null) {
+      $order = 'desc';
+    }
+   
     $params = array();
     if($type === 'profile') {
       $params['user_id'] = $this->input->get('user_id');
     }
     // Get posts
-    $posts = $this->post_model->get_posts($type, $offset, $limit, $params);
+    $posts = $this->post_model->get_posts($type, $order, $offset, $limit, $params);
     // Get HTML for the posts
     $html = $this->post_model->post_html($posts, true);
     // Output JSON
@@ -166,13 +172,18 @@ class Post extends CI_Controller {
   public function poll() {
     $latest_id = $this->input->get('latest_id');
     $type = $this->input->get('type');
+    $order = $this->input->get('order');
+    // fallback to desc if no order is given
+    if ($order == null) {
+      $order = 'desc';
+    }
     $params['latest_id'] = $latest_id;
     // If on profile, do params
     if($type === 'profile') {
       $params['user_id'] = $this->input->get('user_id');
     }
     // Get new posts
-    $posts = $this->post_model->get_posts($type, null, null, $params);
+    $posts = $this->post_model->get_posts($type, $order, null, null, $params);
     // Get HTML for the posts
     $html = $this->post_model->post_html($posts, true);
     // Output JSON

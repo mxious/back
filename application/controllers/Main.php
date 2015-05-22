@@ -35,15 +35,13 @@ class Main extends CI_Controller {
 					'http://fonts.googleapis.com/css?family=Lato:700'
 				);
 
-				$posts = $this->post_model->get_posts('dashboard', 0);
+				$posts = $this->post_model->get_posts('dashboard', 'desc');
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
 				if (empty($data['posts'])) {
 					msg("<strong>There's nothing to see here.</strong> Get started by following some people.");
 				}
-				$data['feed'] = true;
-				$data['feed_container'] = '#feed';
-				$data['feed_type'] = 'dashboard';
+				$data['feed_settings'] = ['#feed', 'dashboard', 'desc'];
 
 				$this->template->load('home', $data);
 
@@ -52,19 +50,17 @@ class Main extends CI_Controller {
 			case false:
 
 				// user is not logged in, explore page instead of dashboard.
-				$data['title'] = 'Explore';
+				$data['title'] = 'Discover';
 				// load some stylesheets
 				$data['stylesheets'] = array(
 					'assets/css/home.css',
 					'http://fonts.googleapis.com/css?family=Lato:700'
 				);
 
-				$posts = $this->post_model->get_posts('explore', 0);
+				$posts = $this->post_model->get_posts('discover', 'desc');
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
-				$data['feed'] = true;
-				$data['feed_container'] = '#feed';
-				$data['feed_type'] = 'explore';
+				$data['feed_settings'] = ['#feed', 'discover', 'desc'];
 				$this->template->load('home', $data);
 				break;
 
