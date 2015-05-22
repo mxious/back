@@ -6,12 +6,16 @@
 
 var Feed = Feed || {
 
-	ajax_offset: 5,
-	container: Main.feed_container,
+	ajax_offset: '',
+	// don't set default values cause thats not too good.
+	container: '',
+	type: '',
+	order: '',
 	
-	init: function (container, type) {
+	init: function (container, type, order) {
 		this.feed_type = type;
 		this.container = container;
+		this.order = order;
 		this.bind();
 	},
 
@@ -32,8 +36,10 @@ var Feed = Feed || {
 	ajax: {
 		load_more: function () {
 			var type = Feed.feed_type;
-			$.getJSON('post/load_more', {offset: Feed.ajax_offset, type: type}).done(function (data) {
-				var elem = $(Main.feed_container);
+			var order = Feed.order;
+			var offset = Feed.ajax_offset;
+			$.getJSON('post/load_more', {offset: offset, type: type, order: order}).done(function (data) {
+				var elem = $(Feed.container);
 				var offset = Feed.ajax_offset + data.count;
 				Feed.ajax_offset = offset;
 				var debug = {

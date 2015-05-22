@@ -40,7 +40,7 @@
       <input placeholder="Search something">
    </form>
    <br>
-   <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-public"></i> Discover</a>
+   <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat" href="discover"><i class="mdi-social-public"></i> Discover</a>
    <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-whatshot"></i> Trending</a>
    <a href="login" id="signin" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-action-input"></i> Sign in</a>
  </div>

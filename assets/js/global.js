@@ -26,29 +26,25 @@
 var Main = Main || {
 	// Define some variables
 	userid: "",
-	// set a default feed container 
-	feed_container: "#feed_container",
-	// turn it on manually on each page you use it on.
-	feed: false,
 
 	init: function (params) {
+		
 		console.log("Initializing Mxious.js");
+		this.userid = params.userid;
+
 		if (params.feed == true) {
 			console.log("Initializing Feed.js");
 			var type = params.feed_type;
-			if ('feed_container' in params) {
-				container = params.feed_container;
-			} else {
-				container = Main.feed_container;
-			}
+			var container = params.feed_container;
+			var order = params.feed_order;
+			Feed.ajax_offset = params.php_offset;
 
 			// hide the layout (hackish)
 			$(container).hide();
 
 			$(container).imagesLoaded(function () {
 				$(container).show();
-
-				Feed.init(container, type);
+				Feed.init(container, type, order);
 			});
 			
 		};

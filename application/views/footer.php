@@ -8,12 +8,12 @@
   <script>
   Main.init({
     userid: <?=$cur_userid?>,
-    // show some pride!
-    show_pride: <?=$pride?>,
     <?php if ($feed): ?>
   	  feed: true,
   	  feed_container: '<?=$feed_container?>',
-      feed_type: '<?=$feed_type?>'
+      feed_type: '<?=$feed_type?>',
+      feed_order: '<?=$feed_order?>',
+      php_offset: <?=POST_DISPLAY_LIMIT?>
     <?php endif; ?>
 
   });
