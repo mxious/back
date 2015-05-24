@@ -71,15 +71,6 @@ class Template {
         $this->set('pride', $pride);
       }
 
-      if (isset($view_data['feed_settings'])) {
-        $this->set('feed', true);
-        $this->set('feed_container', $view_data['feed_settings'][0]);
-        $this->set('feed_type', $view_data['feed_settings'][1]);
-        $this->set('feed_order', $view_data['feed_settings'][2]);
-      } else {
-        $this->set('feed', false);
-      }
-
       $contents = $CI->load->view($view, $view_data, true);
       $this->set('contents', $contents);
 

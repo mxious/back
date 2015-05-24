@@ -34,15 +34,12 @@ class Main extends CI_Controller {
 					'assets/css/home.css',
 					'http://fonts.googleapis.com/css?family=Lato:700'
 				);
-
 				$posts = $this->post_model->get_posts('dashboard', 'desc');
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
 				if (empty($data['posts'])) {
 					msg("<strong>There's nothing to see here.</strong> Get started by following some people.");
 				}
-				$data['feed_settings'] = ['#feed', 'dashboard', 'desc'];
-
 				$this->template->load('home', $data);
 
 				break;
@@ -60,7 +57,6 @@ class Main extends CI_Controller {
 				$posts = $this->post_model->get_posts('discover', 'desc');
 				// Turn $posts array into HTML
 				$data['posts'] = $this->post_model->post_html($posts, true);
-				$data['feed_settings'] = ['#feed', 'discover', 'desc'];
 				$this->template->load('home', $data);
 				break;
 

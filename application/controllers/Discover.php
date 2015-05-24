@@ -50,7 +50,6 @@ class Discover extends CI_Controller {
 				$posts = $this->post_model->get_posts('discover', 'trending');
 				$data['posts'] = $this->post_model->post_html($posts, true);
 				$data['title'] = 'Trending';
-				$data['feed_settings'] = ['#feed', 'discover', 'trending'];
 				$this->template->load('discover/posts');
 				break;
 			case 'new':

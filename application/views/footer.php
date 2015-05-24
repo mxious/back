@@ -4,17 +4,10 @@
   <script src="<?= base_url('assets/js/global.js'); ?>"></script>
   <script src="<?= base_url('assets/js/feed.js'); ?>"></script>
 
-  <!-- FIRE DEM MXIOUS JS UPPPP -->
+  <!-- Fire it up. -->
   <script>
   Main.init({
     userid: <?=$cur_userid?>,
-    <?php if ($feed): ?>
-  	  feed: true,
-  	  feed_container: '<?=$feed_container?>',
-      feed_type: '<?=$feed_type?>',
-      feed_order: '<?=$feed_order?>',
-      php_offset: <?=POST_DISPLAY_LIMIT?>
-    <?php endif; ?>
-
+    php_offset: <?=POST_DISPLAY_LIMIT?>
   });
   </script>
