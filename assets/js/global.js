@@ -24,29 +24,29 @@
 */
 
 var Main = Main || {
-	// Define some variables
-	userid: "",
 
 	init: function (params) {
 		
 		console.log("Initializing Mxious.js");
 		this.userid = params.userid;
+		Feed.ajax_offset = params.php_offset;
 
-		if (params.feed == true) {
-			console.log("Initializing Feed.js");
-			var type = params.feed_type;
-			var container = params.feed_container;
-			var order = params.feed_order;
+		// Find a feed container
+		// c = shorthand for container
+		var c = $('.feed');
+		if (c.length !== 0) {
+			var type = c.data('feed-type');
+			var order = c.data('feed-order');
 			Feed.ajax_offset = params.php_offset;
-
 			// hide the layout (hackish)
-			$(container).hide();
-
-			$(container).imagesLoaded(function () {
-				$(container).show();
-				Feed.init(container, type, order);
+			c.hide();
+			// check if images actually loaded to prevent issues
+			c.imagesLoaded(function () {
+				c.show();
+				// fire it up
+				console.log('Feed.init called.');
+				Feed.init(c, type, order);
 			});
-			
 		};
 
 		// run required things
