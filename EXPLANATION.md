@@ -51,14 +51,15 @@ That then, does this on the JS.
 
 That adds an extra layer of complexity which is pretty annoying and adds overhead.
 
-OUR NEW PROPOSED WAY: ----------------------------------------------------------------------------------------------
+The new way
+=============
 
 Just load a view with this simple html:
 
 	<div id="feed" data-feed="true" data-feed-type="discover" data-feed-order="desc">
 	</div>
 
-And through a simple JS if statement find one and load it according to the parameters given through the attributes.
+And through a simple JS if statement find the item and load a feed according to the settings (order, type) given through the attributes.
 
 Far simpler, eh?
 And the client-side overhead is none, really. It's basically doing the same thing without the server overhead. Just looks if an item has the #feed id or data-feed is set to true in any item.
