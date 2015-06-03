@@ -193,6 +193,10 @@ class Post extends CI_Controller {
     );
     json_output($json, true);
   }
+
+  public function modal() {
+    $this->load->view('templates/post_modal');
+  }
   
 }
 

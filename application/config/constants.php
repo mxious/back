@@ -12,8 +12,10 @@ define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
 // The number of comments to initially display
 define('COMMENT_DISPLAY_LIMIT', 3);
 
-// The site image
-define('SITE_IMG', 'https://download.unsplash.com/photo-1424912599891-40e671ad91e3');
+// The site constants
+define('SITE_IMG', 'https://download.unsplash.com/46/unsplash_52c319226cefb_1.JPG');
+define('SITE_HEADER', 'we\'re the dreamers');
+define('SITE_TAGLINE', 'Share albums, music videos, and build the ultimate music collection.');
 
 // The number of posts to display on dashboard (before more are loaded)
 // WHEN MODIFYING THIS MAKE SURE TO UPDATE THE ajax_offset value in the Feed.js file.

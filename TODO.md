@@ -21,3 +21,4 @@ Done to-do's are marked with ~~strikethrough.~~
 17. ~~EVENT DRIVEN DESIGN (EVENTS LIBRARY JESUS CHRIST.)~~
 18. Remove the account events. I don't find it to be necessary at all.
 19. Increase compatibility with older PHP  versions (I love the bleeding edge, I know <3)
+20. Posting (WIP)

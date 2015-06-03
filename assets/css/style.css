@@ -244,7 +244,6 @@ nav {
   height: 100%;
   border-radius: 0px;
   border: 0px;
-  z-index: 1030;
   margin-top: 0;
   line-height: inherit;
   padding-top: 25px;
@@ -300,4 +299,96 @@ nav {
 .copy {
   color: gray;
   font-size: 12px;
+}
+.post-button {
+  height:50px;
+  padding-top: 8px;
+}
+
+/* We can't do the Materialize bringup yet until it is stable. Instead, bring the required (updated) css we need.) */
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 2px;
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+  transform: translate(0);
+  will-change: top, opacity; }
+  @media only screen and (max-width : 992px) {
+    .modal {
+      width: 80%; } }
+  .modal h1, .modal h2, .modal h3, .modal h4 {
+    margin-top: 0; }
+  .modal .modal-content {
+    padding: 24px; }
+  .modal .modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #fafafa;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%; }
+    .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
+      float: right;
+      margin: 6px 0; }
+
+#lean-overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 115%;
+  width: 100%;
+  background: #000;
+  display: none;
+  will-change: opacity; }
+
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%; }
+  .modal.modal-fixed-footer .modal-content {
+    position: fixed;
+    max-height: 100%;
+    padding-bottom: 64px;
+    width: 100%;
+    overflow-y: auto; }
+  .modal.modal-fixed-footer .modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0; }
+
+.modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  border-radius: 0;
+  will-change: bottom, opacity; 
+}
+
+#post-modal {
+  min-height: 85%;
+  top: 7% !important;
+}
+
+#post-modal textarea {
+  margin: 0px;
+  width: 325px;
+  height: 81px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 0;
 }

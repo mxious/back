@@ -8,9 +8,9 @@
        <input placeholder="Search something">
     </form>
     <br>
-    <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-public"></i> Dashboard</a>
+    <a class="white-text orange orange-darken-4 btn-flat modal-trigger post-button" href="#post-modal"> Create</a>
+    <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-public"></i> Feed</a>
     <a class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-notifications"></i> Alerts</a>
-    <a href="people" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-people"></i> People</a>
     <a href="trending" class="orange-text text-darken-4 waves-effect waves-orange waves-darken-4 btn-flat"><i class="mdi-social-whatshot"></i> Trending</a>
   </div>
   <footer>
