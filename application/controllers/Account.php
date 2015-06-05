@@ -82,8 +82,6 @@ class Account extends CI_Controller {
     if(!$this->php_session->get('loggedin')) {
       redirect('login');
     }
-    // Log the event
-    $this->events->log('account', 'logout');
     // Destroy session
     $this->php_session->destroy();
     // Show message
