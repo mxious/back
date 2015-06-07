@@ -12,4 +12,10 @@ function logged_in() {
 	return $CI->php_session->get('loggedin');
 }
 
+function login_required() {
+	if (logged_in() == null or loggedin() == false):
+		redirect('/');
+	endif;
+}
+
 /* End */
