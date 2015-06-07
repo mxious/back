@@ -1,47 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/* Mxious Constants */
-
-// Page to go to when user first registers
-define('REGISTER_REDIRECT', '/');
-
-// Email address for sys emails
-define('SYS_EMAIL_FROM', 'noreply@alphasquare.us');
-
-// The number of comments to initially display
-define('COMMENT_DISPLAY_LIMIT', 3);
-
-// The site constants
-define('SITE_IMG', 'https://download.unsplash.com/46/unsplash_52c319226cefb_1.JPG');
-define('SITE_HEADER', 'we\'re the dreamers');
-define('SITE_TAGLINE', 'Share albums, music videos, and build the ultimate music collection.');
-
-// The number of posts to display on dashboard (before more are loaded)
-// WHEN MODIFYING THIS MAKE SURE TO UPDATE THE ajax_offset value in the Feed.js file.
-define('POST_DISPLAY_LIMIT', 15);
-
-// The number of people to display on discover page 
-define('PEOPLE_DISPLAY_LIMIT', 30);
-
-// Min Pass Length
-define('MIN_PASS_LENGTH', 6);
-
-// RegExp patterns
-
-// Username format (only letters, numbers, underscores)
-define('REGEX_USERNAME', '/^[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*$/');
-
-// Links
-//define('REGEX_LINK', '/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/');
-
-// @replies
-define('REGEX_AT_REPLY', '/@([a-zA-Z0-9_]+)/');
-
-// &tags
-define('REGEX_TAG', '/\B&(?!(?:apos|quot|[gl]t|amp);|#)(\w+)/');
-
-
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
