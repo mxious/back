@@ -15,10 +15,9 @@ class Home extends CI_Controller {
 	 * @access public
 	 */
 	
-	public function __construct()
-	{
+	public function __construct() {
      	parent::__construct();
-     	// load any libraries. None for now
+     	// load any libraries. none for now
 	}
 
 	/**
@@ -36,4 +35,5 @@ class Home extends CI_Controller {
 			redirect('feed');
 		}
 	}
+	
 }
