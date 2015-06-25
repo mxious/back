@@ -9,10 +9,7 @@
  */
 
 class Account extends CI_Controller {
-	
-	// keep a copy of the session variable so we don't stres $_SESSION much
-	public $session;
-	
+		
 	/**
 	 * Construct for this controller. Requires models.
 	 */
@@ -21,11 +18,23 @@ class Account extends CI_Controller {
 		parent::__construct();
 		$this->load->model('account_model');
 	}
+
+	/**
+	 * Login controller
+	 */
 	
 	public function login() {
+
+		if (logged_in()) {
+			redirect('feed');
+		}
+
 		if ($this->input->post('handle') && $this->input->post('password')) {
+			// user submit the form
 			$handle = $this->input->post('handle');
 			$password = $this->input->post('password');
+			// create an URL for failed logins				
+			$fail_url = sprintf("login?handle=%s", $handle);
 			
 			if (empty($handle) || empty($password)) {
 				msg('Please input your password and username.');
@@ -36,13 +45,19 @@ class Account extends CI_Controller {
 			
 			switch ($status) {
 				case true:
-					// log in
+					redirect('feed');
 					break;
 				case false:
-					// idk
+					// user has incorrect credentials, redirect back
+					redirect($fail_url);
 					break;
 			}
+		} else {
+			$settings['title'] = 'Login';
+			$this->template->load('account/login', $settings, array());
+			
 		}
+
 	}
 	
 	public function register() {

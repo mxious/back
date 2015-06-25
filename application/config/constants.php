@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// View page title suffix.
+define('TITLE_SUFFIX', '- Mxious');
+
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

@@ -84,6 +84,20 @@ class PHP_session {
   }
 
   /**
+   * Check if user is loggedin
+   * @return boolean user's status
+   */
+  public function is_loggedin()
+  {
+    if (!isset($_SESSION['loggedin'])) {
+      // if it doesn't exist user is not loggedin
+      return false;
+    } else {
+      return $_SESSION['loggedin'];
+    }
+  }
+
+  /**
    * Regenerate the session ID
    * @access public
    * @param  boolean $del_old Whether or not to delete the old ID
