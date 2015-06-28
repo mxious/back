@@ -29,19 +29,19 @@ class Account extends CI_Controller {
 			redirect('feed');
 		}
 
-		if ($this->input->post('handle') && $this->input->post('password')) {
+		if ($this->input->post('username') || $this->input->post('password')) {
 			// user submit the form
-			$handle = $this->input->post('handle');
+			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			// create an URL for failed logins				
-			$fail_url = sprintf("login?handle=%s", $handle);
-			
-			if (empty($handle) || empty($password)) {
+			$fail_url = sprintf("login?username=%s", $username);
+
+			if ($username < 1 || $password < 1) {
 				msg('Please input your password and username.');
 				redirect('login');
 			}
 			
-			$status = $this->account_model->authenticate($handle, $password);
+			$status = $this->account_model->authenticate($username, $password);
 			
 			switch ($status) {
 				case true:
@@ -49,11 +49,14 @@ class Account extends CI_Controller {
 					break;
 				case false:
 					// user has incorrect credentials, redirect back
+					msg('Wrong username/password combo.');
 					redirect($fail_url);
 					break;
 			}
 		} else {
 			$settings['title'] = 'Login';
+			$settings['fixed_container'] = true;
+			$settings['fixed_container_title'] = "Login";
 			$this->template->load('account/login', $settings, array());
 			
 		}
@@ -61,7 +64,11 @@ class Account extends CI_Controller {
 	}
 	
 	public function register() {
-		
+		$settings['title'] = 'Register';
+		$settings['fixed_container'] = true;
+		$settings['fixed_container_title'] = "Register";
+		$settings['extra_stylesheets'] = array("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+		$this->template->load('account/register', $settings);
 	}
 	
 	public function forgot_password() {

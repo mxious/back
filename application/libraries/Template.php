@@ -35,17 +35,17 @@ class Template {
      * Load a view into the main template
      * @param  string  $view      The view to load
      * @param  array   $settings  Array of page settings
-     * @param  array   $view_data Variables to pass to the view
+     * @param  array   $variables Variables to pass to the view
      * @param  string  $template  The template to load the view into
      * @param  boolean $return    Whether or not to return the output as a HTML string
      * @return void|string
      */
-    public function load($view = '', $settings = array(), $view_data = array(), $template = 'templates/master', $return = FALSE) {
+    public function load($view = '', $settings = array(), $variables = array(), $template = 'templates/master', $return = FALSE) {
 
       $CI =& get_instance();
 
-      $view_data['session'] = $CI->php_session;
-      $view_data['loggedin'] = $CI->php_session->get('loggedin');
+      $variables['session'] = $CI->php_session;
+      $variables['loggedin'] = $CI->php_session->get('loggedin');
 
       $title = $settings['title'];
       // apply the title suffix
@@ -60,6 +60,15 @@ class Template {
         $meta = meta($settings['meta']);
       }
 
+      if (isset($settings['fixed_container'])) {
+        $this->set('fixed_container', true);
+        if (isset($settings['fixed_container_title'])) {
+         $this->set('fctitle', $settings['fixed_container_title']);         
+        }
+      } else {
+        $this->set('fixed_container', false);        
+      }
+
       if(isset($settings['parallax'])) {
         $this->set('parallax', $settings['parallax']);
       } else { 
@@ -68,19 +77,22 @@ class Template {
       
       $this->set('extra_meta', $meta);
 
-      $contents = $CI->load->view($view, $view_data, true);
+      $contents = $CI->load->view($view, $variables, true);
       $this->set('contents', $contents);
 
       // Pass extra stylesheets (link tags) to header if defined
       $stylesheets = '';
-      if(isset($settings['stylesheets'])) {
-        foreach($settings['stylesheets'] as $href) {
+      if(isset($settings['extra_stylesheets'])) {
+        foreach($settings['extra_stylesheets'] as $href) {
           $stylesheets .= link_tag($href) . "\n";
         }
       }
-      $this->set('extra_stylesheets', $stylesheets);
 
-      $this->set('msg', $CI->php_session->flashdata('msg'));
+      $msg_box_data = array('msg' => show_msg());
+      $msg_box = $CI->load->view('templates/msg_box', $msg_box_data, true);
+      $this->set('msg', $msg_box);
+
+      $this->set('extra_stylesheets', $stylesheets);
 
       $output = $CI->load->view($template, $this->template_data, true);
 

@@ -39,6 +39,12 @@ body { padding-top: 70px; }
     color: #fff;
 }
 
+.navbar-brand {
+    font-family: Oleo Script;
+    color: #F89406 !important;
+    font-size: 28px;
+}
+
 @media screen and (min-width:768px){
     .navbar-brand-centered {
         position: absolute;
@@ -139,6 +145,7 @@ limitations under the License.
     padding: 20px;
     font-weight: 300;
     border-radius: 0 0 2px 2px;
+    word-wrap: break-word;
   }
   .card p {
     margin: 0;
@@ -146,6 +153,7 @@ limitations under the License.
   .card .action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
     padding: 20px;
+    text-align: center;
   }
 
   .card .image {
@@ -182,7 +190,8 @@ limitations under the License.
  width:  100%; 
 }
 
-.grid {
+
+#grid {
   margin: 0 auto;
 }
 
@@ -211,6 +220,7 @@ limitations under the License.
 	border-radius: 3px;
 	padding: 20px 40px 40px 40px;
 	margin-top: 5vh;
+  padding-bottom: 50px;
 }
 
 .page-container .page-header {
@@ -219,4 +229,79 @@ limitations under the License.
 	font-weight: 300 !important;
 	/* sexyness below */
 	letter-spacing: -1.5px;
+}
+
+.btn {
+  border-radius: 4px;
+}
+
+.img-avatar-card {
+  width: 25px;
+}
+
+.card .media-body {
+  font-size: 12px;
+}
+
+.or-typography {
+  position: relative;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.or-typography span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center;
+}
+.or-typography hr {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.input-footer {
+  background-color: #eee;
+  position: relative;
+  border: 1px solid #ccc;
+  border-top: 0px;
+  width: 100%;
+  border-radius: 0px 0px 3px 3px;
+  text-align: center;
+  height: 27px;
+  padding-top: 4px;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+.input-footer-attach {
+  border-bottom: 1px solid #ccc;
+  border-radius: 0px 5px 0px 0px;
+  box-shadow: 0 3.1px 6px -6px #222;
+
+}
+
+.input-footer-attach-prepend {
+  border-radius: 3px 0px 3px 0px;
+}
+
+.input-footer-attach-group {
+
+}
+
+input {
+  box-shadow: 2.3px 2.3px 6px -6px #222 !important;
+}
+
+.page-container .page-header {
+  margin-bottom: 30px;
 }
