@@ -1,7 +1,10 @@
-    $(function () {
-        $("#menu").tooltip('show');
-    });
+$(function () {
+    $("#menu").tooltip('show');
+});
 
-$("#grid").masonry({
-	'isFitWidth': true
+var grid = $('#grid');
+grid.imagesLoaded(function() {
+	grid.masonry({
+	    isFitWidth:true
+	});    
 });
