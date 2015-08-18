@@ -22,6 +22,9 @@ class Home extends Controller_Template
 		if (Helper::is_loggedin()) {
 			\Response::redirect('/dashboard');
 		}
+
+		$this->template->title = "Home | Mxious";
+		$this->template->posts = Post_Model::get_posts();
 		$this->template->content = View::forge('home/content');
 	}
 

@@ -5,6 +5,8 @@ $(function () {
 var grid = $('#grid');
 grid.imagesLoaded(function() {
 	grid.masonry({
-	    isFitWidth:true
-	});    
+	    isFitWidth:true,
+	    isAnimated: true,
+	    columnWidth: '.card-std'
+	});
 });
