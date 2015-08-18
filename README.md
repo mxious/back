@@ -3,6 +3,8 @@
 
 Source code for the Mxious social music application. 
 
+Branch: `next`
+
 Installing
 ==========
 Installing a development instance of Mxious is easy.
