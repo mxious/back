@@ -10,6 +10,12 @@
  * @link       http://fuelphp.com
  */
 
+/* CONSTANTS */
+
+define('POST_LOAD_LIMIT', 5);
+
+/* END CONSTANTS */
+
 return array(
 
 	/**
